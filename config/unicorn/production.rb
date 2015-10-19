@@ -2,8 +2,10 @@
 worker_processes 1
 timeout 15
 
-listen "/tmp/unicorn.sock"
-pid "/tmp/unicorn.pid"
+app_path = '/var/www/endo-sample-site/current'
+
+listen "#{app_path}/tmp/sock/unicorn.sock"
+pid "#{app_path}/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
