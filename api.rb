@@ -33,13 +33,18 @@ class API < Grape::API
         articles.find{|a| a[:id] == params['id'].to_i}
       end
 
-      post do
-        {
-          id: 2,
-          title: params['title'],
-          text: params['text'],
-        }
-      end
+    end
+
+    params do
+      requires :title, type: String
+      requires :text, type: String
+    end
+    post do
+      {
+        id: 2,
+        title: params['title'],
+        text: params['text'],
+      }
     end
 
   end
