@@ -19,6 +19,17 @@ class API < Grape::API
         },
       ]
     end
+
+    def cors_set_access_control_headers
+      header 'Access-Control-Allow-Origin', '*'
+      header 'Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS'
+      header 'Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, Token'
+      header 'Access-Control-Max-Age', "1728000"
+    end
+  end
+
+  before do
+    cors_set_access_control_headers
   end
 
   resource :articles do
