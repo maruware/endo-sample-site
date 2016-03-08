@@ -1,3 +1,4 @@
-require_relative 'api'
+# This file is used by Rack-based servers to start the application.
 
-run API
+require ::File.expand_path('../config/environment', __FILE__)
+run Rails.application
