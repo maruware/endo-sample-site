@@ -22,5 +22,12 @@ module EndoSampleSite
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # for API
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.template_engine false
+    end
   end
 end
