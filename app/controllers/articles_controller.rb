@@ -1,5 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_filter :basic_auth
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |user, pass|
+      user == 'user' && pass == 'pass'
+    end
+  end
 
   # GET /articles
   # GET /articles.json
