@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :articles
+  resources :users, except: [:new, :edit, :update, :delete], defaults: { format: "json" } do
+    collection do
+      get 'login'
+    end
+
+    member do
+      get 'articles'
+    end
+  end
+  resources :articles, defaults: { format: "json" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
